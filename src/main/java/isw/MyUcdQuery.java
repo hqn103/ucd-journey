@@ -33,9 +33,9 @@ public class MyUcdQuery {
        au[0] = "U"; au[1] = "FOUO";
         Authorizations auths = new Authorizations(au);
         Scanner scan = conn.createScanner("ucd_artifact", auths);
-        //scan.setRange(new Range("3276a62f4712f5206d573c579a9272eb4bfeb8e9943006ce82aa54ff4d548795", "3276a62f4712f5206d573c579a9272eb4bfeb8e9943006ce82aa54ff4d548795"));
-        //scan.fetchColumnFamily(new Text("Metadata"));
-       scan.setBatchSize(3);
+        scan.setRange(new Range("3276a62f4712f5206d573c579a9272eb4bfeb8e9943006ce82aa54ff4d548795", "3276a62f4712f5206d573c579a9272eb4bfeb8e9943006ce82aa54ff4d548795"));
+        scan.fetchColumnFamily(new Text("Metadata"));
+       //scan.setBatchSize(3);
         for (Entry<Key, Value> entry : scan) {
             String row = entry.getKey().getRow().toString();
             System.out.println(entry.getKey().toString());
